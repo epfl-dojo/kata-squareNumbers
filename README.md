@@ -1,11 +1,14 @@
 # Rectangle Chiffre
-Application pratique JAVA : remplir un rectangle de chiffres par ligne ou parcolonnes.
+Kata: remplir un rectangle de chiffres par ligne ou par colonnes.
 
 ## But
-Travailler la manipulation des boucles.
+Cet exercice permet de travailler les boucles dans le langages de votre choix.
+
+## Comment procéder
+[Forker](https://github.com/epfl-dojo/rectangleChiffre/#fork-destination-box) le repo et créer une branche (`git checkout -b username-langage` par exemple `git checkout -b ponsfrilus-nodejs`, depuis votre fork). Faire ensuite une pull request pour l'ajouter à ce repo.
 
 ## Problème
-Il s'agit de remplir un rectangle de chiffre de deux manières:
+Générer un tableau de chiffres par lignes et par colonnes. L'utilisateur doit entrer la largeur et la hauteur du tableau. Le programme affichera les deux versions (par lignes et par colonnes), toujours en commençant avec 1 en haut à gauche.
 
 ### - par ligne
 ```
@@ -20,5 +23,3 @@ Il s'agit de remplir un rectangle de chiffre de deux manières:
 2 5 8
 3 6 9
 ```
-
-Afin de générer les tableaux de chiffres, l'utilisateur doit entrer la largeur et la hauteur du rectangle. Le programme affichera les deux versions en commençant avec 1 en haut à gauche.
