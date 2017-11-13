@@ -2,6 +2,7 @@
 Application pratique JAVA : remplir un rectangle de chiffres par ligne ou parcolonnes.
 
 ## But
+Travailler la manipulation des boucles.
 
 ## Problème
 Il s'agit de remplir un rectangle de chiffre de deux manières:
