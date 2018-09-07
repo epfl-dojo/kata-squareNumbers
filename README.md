@@ -5,10 +5,14 @@ Kata : remplir un carré de chiffres organisés en lignes, colonnes et spirale.
 Cet exercice permet de travailler les boucles dans le langage de votre choix.
 
 ## Comment procéder
-[Forker](https://github.com/epfl-dojo/rectangleChiffre/#fork-destination-box) le repo et créer une branche (`git checkout -b username-langage` par exemple `git checkout -b ponsfrilus-nodejs`, depuis votre fork). Faire ensuite une pull request pour l'ajouter à ce repo.
+[Forker](https://github.com/epfl-dojo/kata-squareNumbers/#fork-destination-box) le repo et créer une branche (`git checkout -b username-langage` par exemple `git checkout -b ponsfrilus-nodejs`, depuis votre fork). Faire ensuite une pull request pour l'ajouter à ce repoen vous ajoutant comme contributeurs en bas de ce fichier.
 
 ## Problème
 Générer un carré de chiffres en lignes, colonnes et spirale. L'utilisateur doit entrer la taille du carré. Le programme affichera les trois versions (lignes, colonnes, spirale), selon exemples ci-dessous.
+
+  * L'utilisateur ne peut entrer que des chiffres;
+  * Les nombres doivent être préfixés d'autant de 0 que nécessaire (e.g. 001 → 100);
+  * Les trois carrés de chiffres doivent être affichés.
 
 ### - en lignes
 ```
@@ -39,3 +43,6 @@ Générer un carré de chiffres en lignes, colonnes et spirale. L'utilisateur do
           18 05 04 03 12
           17 16 15 14 13
 ```
+
+## Contributeurs (langages par ordre alphabétique)
+  * [language](./squareNumbers.language) → [@username](https://github.com/username)
