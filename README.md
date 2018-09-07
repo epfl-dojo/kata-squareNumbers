@@ -1,4 +1,4 @@
-# Rectangle Chiffre
+# Carré de chiffres
 Kata : remplir un carré de chiffres organisés en lignes, colonnes et spirale.
 
 ## But
@@ -10,13 +10,13 @@ Cet exercice permet de travailler les boucles dans le langage de votre choix.
 ## Problème
 Générer un carré de chiffres en lignes, colonnes et spirale. L'utilisateur doit entrer la taille du carré. Le programme affichera les trois versions (lignes, colonnes, spirale), selon exemples ci-dessous.
 
-  * L'utilisateur ne peut entrer que des chiffres;
+  * L'utilisateur peut entrer que des chiffres (gestion de l'input/message d'erreur);
   * Les nombres doivent être préfixés d'autant de 0 que nécessaire (e.g. 001 → 100);
   * Les trois carrés de chiffres doivent être affichés.
 
 ### - en lignes
 ```
- 3x3           5x5
+ 3x3          5x5
 1 2 3    01 02 03 04 05  
 4 5 6    06 07 08 09 10 
 7 8 9    11 12 13 14 15
@@ -36,12 +36,12 @@ Générer un carré de chiffres en lignes, colonnes et spirale. L'utilisateur do
 
 ### - en spirale
 ```
- 3x3           5x5
-7 8 9     21 22 23 24 25
-6 1 2     20 07 08 09 10
-5 4 3     19 06 01 02 11
-          18 05 04 03 12
-          17 16 15 14 13
+ 3x3          5x5
+7 8 9    21 22 23 24 25
+6 1 2    20 07 08 09 10
+5 4 3    19 06 01 02 11
+         18 05 04 03 12
+         17 16 15 14 13
 ```
 
 ## Contributeurs (langages par ordre alphabétique)
