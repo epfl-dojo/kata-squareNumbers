@@ -17,8 +17,8 @@ Générer un carré de chiffres en lignes, colonnes et spirale. L'utilisateur do
 ### - en lignes
 ```
  3x3          5x5
-1 2 3    01 02 03 04 05  
-4 5 6    06 07 08 09 10 
+1 2 3    01 02 03 04 05
+4 5 6    06 07 08 09 10
 7 8 9    11 12 13 14 15
          16 17 18 19 20
          21 22 23 24 25
@@ -45,4 +45,4 @@ Générer un carré de chiffres en lignes, colonnes et spirale. L'utilisateur do
 ```
 
 ## Contributeurs (langages par ordre alphabétique)
-  * [language](./squareNumbers.language) → [@username](https://github.com/username)
+  * [python](./squareNumbers.py) → [@epfl-dojo](https://github.com/epfl-dojo)
