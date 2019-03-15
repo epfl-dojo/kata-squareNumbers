@@ -51,11 +51,6 @@
                             (y (vector-ref coords 1)))
                             (vector-ref (vector-ref m y) x))))
 
-
-(define in-range? (λ(max val)
-                    (and (>= val 0)
-                         (< val max))))
-
 (define turn! (λ (dir)
                 (cond ((equal? dir '#(-1 0))
                        (vector-copy! dir 0 '#(0 1)))
@@ -69,14 +64,17 @@
                       ((equal? dir '#(0 -1))
                        (vector-copy! dir 0 '#(-1 0))))))
 
-
+(define exn:fail:contract:vector-ref? (λ (e)
+  (and (exn:fail:contract? e)
+       (equal? "vector-ref" (substring (exn-message e) 0 10)))))
 
 (define advance! ( λ (m c s)
                     (let ((size (vector-length m))
-                          (c+s (vector-map + c s)))
-                     (if (and (in-range? size (vector-ref c+s 0))
-                              (in-range? size (vector-ref c+s 1))
-                              (= 0 (matrix-get m c+s)))
+                          (c+s (vector-map + c s))
+                          (wall -1))
+                     (if (= 0 (with-handlers ([exn:fail:contract:vector-ref?
+                                               (λ (e) wall)])
+                                (matrix-get m c+s)))
                       (vector-copy! c 0 c+s) ; if true
                       (begin 
                         (turn! s)           ; else
