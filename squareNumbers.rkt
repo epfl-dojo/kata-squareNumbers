@@ -1,6 +1,6 @@
 #lang racket
 (require dyoo-while-loop)
-;;(define size (λ (size) (make-string size #\*)))
+
 (define display-line (λ(str) (display (string-append str "\n" ))))
 (display-line "Entrer la taille du carré:")
 (define size (string->number (read-line (current-input-port))))
@@ -14,27 +14,29 @@
 ;;          18 05  04  03  12
 ;;          17 16  15  14  13
 
-(define s3 '#(#(7 8 9)
+(define solution3 '#(#(7 8 9)
               #(6 1 2)
               #(5 4 3)))
 
-(define s5 '#(#(21 22 23 24 25)
+(define solution5 '#(#(21 22 23 24 25)
               #(20 07 08 09 10)
               #(19 06 01 02 11)
               #(18 05 04 03 12)
               #(17 16 15 14 13)))
 
+;; taille = log_10
 (define display-matrix (λ (m)
-  (for ([l m])
-    (for ([n l])
-      (display(~r n #:min-width 2 #:pad-string "0"))
-      (display " "))
-    (displayln ""))))
+                         (let* ((size (vector-length m))
+                                (last-n (* size size))
+                                (print-size (+ 1 (exact-floor (log last-n 10)))))
+                           (for ([l m])
+                             (for ([n l])
+                               (display(~r n #:min-width print-size #:pad-string "0"))
+                               (display " "))
+                             (displayln "")))))
 
-(display-matrix s3)
-
-; (define multiplie-liste (λ (l size) (for/list ([i size]) (struct-copy l)))) 
-
+;; Pour tester :
+; (display-matrix solution3)
 
 
 (define mkmatrix (λ(size)  (build-vector size (λ (x) (build-vector size (λ (x) 0))))))
@@ -43,9 +45,44 @@
                       (let ((x (vector-ref coords 0))
                             (y (vector-ref coords 1)))
                             (vector-set! (vector-ref m y) x v))))
-                      ;m[x,y]=v
 
-(define advance! ( λ (m c s) ()))
+(define matrix-get (λ(m coords)
+                      (let ((x (vector-ref coords 0))
+                            (y (vector-ref coords 1)))
+                            (vector-ref (vector-ref m y) x))))
+
+
+(define in-range? (λ(max val)
+                    (and (>= val 0)
+                         (< val max))))
+
+(define turn! (λ (dir)
+                (cond ((equal? dir '#(-1 0))
+                       (vector-copy! dir 0 '#(0 1)))
+
+                      ((equal? dir '#(0 1))
+                       (vector-copy! dir 0 '#(1 0)))
+
+                      ((equal? dir '#(1 0))
+                       (vector-copy! dir 0 '#( 0 -1)))
+
+                      ((equal? dir '#(0 -1))
+                       (vector-copy! dir 0 '#(-1 0))))))
+
+
+
+(define advance! ( λ (m c s)
+                    (let ((size (vector-length m))
+                          (c+s (vector-map + c s)))
+                     (if (and (in-range? size (vector-ref c+s 0))
+                              (in-range? size (vector-ref c+s 1))
+                              (= 0 (matrix-get m c+s)))
+                      (vector-copy! c 0 c+s) ; if true
+                      (begin 
+                        (turn! s)           ; else
+                        (advance! m c s)))))) ; else recall advance...
+  
+
 
 (define spirale (
                  λ (size) (
@@ -56,21 +93,17 @@
                             
                             (while (> z 0)    
                                    (matrix-set! m coords z)
+                                   (when (= z 1) (break))
                                    (advance! m coords step)
-                            )
-                            
-;                            (for/and ([i (in-range (* size size))])
-                            forn if x!0 then x=x-1
-                            (while ())
-                            
-                            (displayln (- size i))
-                              (or ()) ;; When this is false, loop stops)
-                            
+                                   (set! z (- z 1)))
                             m)))
 
 
 (display-matrix (spirale size))
 
-(define test (and (equal? (spirale 5) s5) (equal? (spirale 3) s3 )))
+;;;;;;;;;;;;;;;;; Le programme est fini, merci pour votre attention.
+;;;;;;;;;;;;;;;;; Ci-dessous : les tests unitaires.
+(define test (and
+              (equal? solution5 (spirale 5))
+              (equal? solution3 (spirale 3))))
 test
-
