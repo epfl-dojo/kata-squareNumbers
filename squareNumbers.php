@@ -20,17 +20,14 @@ function column($size){
   $total = $size * $size;
   $counter = $size;
 
-  for ($i=1; $i <= $total ; $i++) {
+  for ($i=1; $i <= $size ; $i++) {
     print sprintf(" %'.02d"," $i");
     $current = $i;
-    for ($j=1; $j <= $counter ; $j++) {
+    for ($j=1; $j < $counter ; $j++) {
       $current += $size;
       print sprintf(" %'.02d"," $current");
-      if($counter == $size) {
-        print "\n";
-      }
     }
-    $counter = 1;
+    print"\n";
   }
 }
 
