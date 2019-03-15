@@ -1,9 +1,6 @@
 #lang racket
 (require dyoo-while-loop)
 
-(displayln "Entrer la taille du carré:")
-(define size (string->number (read-line (current-input-port))))
-
 (define border_up_right (λ(size) (* size size)))
  
  ;; 3x3          5x5
@@ -96,7 +93,9 @@
                             m)))
 
 
-(display-matrix (spirale size))
+(displayln "Entrer la taille du carré:")
+(let ((size (string->number (read-line (current-input-port)))))
+  (display-matrix (spirale size)))
 
 ;;;;;;;;;;;;;;;;; Le programme est fini, merci pour votre attention.
 ;;;;;;;;;;;;;;;;; Ci-dessous : les tests unitaires.
