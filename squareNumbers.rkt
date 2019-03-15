@@ -1,8 +1,7 @@
 #lang racket
 (require dyoo-while-loop)
 
-(define display-line (λ(str) (display (string-append str "\n" ))))
-(display-line "Entrer la taille du carré:")
+(displayln "Entrer la taille du carré:")
 (define size (string->number (read-line (current-input-port))))
 
 (define border_up_right (λ(size) (* size size)))
