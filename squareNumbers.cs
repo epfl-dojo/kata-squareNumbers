@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -42,164 +42,61 @@ namespace CarreDeChiffres
         }
         private static void kataSquare(int nombre)
         {
-            tableSuivante();
+            seprateurDeTables();
             carréEnLigne(nombre);
-            tableSuivante();
+            seprateurDeTables();
             carréColonne(nombre);
-            tableSuivante();
-            if(nombre != 1)
+            seprateurDeTables();
+            carréSpirale(nombre);
+            seprateurDeTables();
+        }
+        class MarcheSpirale
+        {
+            public int nombreDeLaCase;
+            public int x;
+            public int y;
+            public Vecteur déplacement;
+
+            public MarcheSpirale(int nombre)
             {
-                carréSpirale(nombre);
+                x = nombre - 1;
+                y = nombre - 1;
+                déplacement = Vecteur.versLaGauche;
+                nombreDeLaCase = nombre * nombre;
             }
-            else
-            {
-                Console.WriteLine(1);
-            }
-            tableSuivante();
         }
         private static void carréSpirale(int nombre)
         {
-            int nombreDeLaCase = nombre * nombre;
             int?[,] array = new int?[nombre, nombre];
-            int x = nombre - 1;
-            int y = nombre - 1;
-            while (nombreDeLaCase > 0)
-            {
-                bool fin = true;
-                while (fin == true)
-                {
-                    if (x == 0)
-                    {
-                        if (array[x, y] == null)
-                        {
-                            array[x, y] = nombreDeLaCase;
-                            fin = false;
-                            nombreDeLaCase--;
-                        }
-                        else
-                        {
-                            fin = false;
-                            x++;
-                        }
-                    }
-                    else
-                    {
-                        if(array[x, y] == null)
-                        {
-                            array[x, y] = nombreDeLaCase;
-                            x--;
-                            nombreDeLaCase--;
-                        }
-                        else
-                        {
-                            fin = false;
-                            x++;
-                        }
-                    }
-                }
-                y--;
-                fin = true;
-                while (fin == true)
-                {
-                    if (y == 0)
-                    {
-                        if (array[x, y] == null)
-                        {
-                            array[x, y] = nombreDeLaCase;
-                            fin = false;
-                            nombreDeLaCase--;
-                        }
-                        else
-                        {
-                            fin = false;
-                            y++;
-                        }
-                    }
-                    else
-                    {
-                        if (array[x, y] == null)
-                        {
-                            array[x, y] = nombreDeLaCase;
-                            y--;
-                            nombreDeLaCase--;
-                        }
-                        else
-                        {
-                            fin = false;
-                            y++;
-                        }
-                    }
-                }
-                x++;
-                fin = true;
-                while (fin == true)
-                {
-                    if (x == nombre - 1)
-                    {
-                        if (array[x, y] == null)
-                        {
-                            array[x, y] = nombreDeLaCase;
-                            fin = false;
-                            nombreDeLaCase--;
-                        }
-                        else
-                        {
-                            fin = false;
-                            x--;
-                        }
-                    }
-                    else
-                    {
-                        if (array[x, y] == null)
-                        {
-                            array[x, y] = nombreDeLaCase;
-                            x++;
-                            nombreDeLaCase--;
-                        }
-                        else
-                        {
-                            fin = false;
-                            x--;
-                        }
-                    }
-                }
-                y++;
-                fin = true;
-                while (fin == true)
-                {
-                    if (y == nombre - 1)
-                    {
-                        if (array[x, y] == null)
-                        {
-                            array[x, y] = nombreDeLaCase;
-                            fin = false;
-                            nombreDeLaCase--;
-                        }
-                        else
-                        {
-                            fin = false;
-                            y--;
-                        }
+            MarcheSpirale état = new MarcheSpirale(nombre);
 
-                    }
-                    else
-                    {
-                        if (array[x, y] == null)
-                        {
-                            array[x, y] = nombreDeLaCase;
-                            y++;
-                            nombreDeLaCase--;
-                        }
-                        else
-                        {
-                            fin = false;
-                            y--;
-                        }
-                    }
-                }
-                x--;
+            while (état.nombreDeLaCase > 0)
+            {
+                ligneDroite(état, nombre, array);
             }
             dessinerTableau(nombre, array);
+        }
+        private static void ligneDroite(MarcheSpirale état, int nombre, int?[,] array)
+        {
+            while (true)
+            {
+                array[état.x, état.y] = état.nombreDeLaCase;
+                if (-- état.nombreDeLaCase == 0) return;
+
+                if ((!état.déplacement.sortiraitDuCadre(état.x, état.y, nombre)) &&
+                    array[état.déplacement.deplaceX(état.x), état.déplacement.deplaceY(état.y)] == null)
+                {
+                    état.x = état.déplacement.deplaceX(état.x);
+                    état.y = état.déplacement.deplaceY(état.y);
+                }
+                else
+                {
+                    break;
+                }
+            }
+            état.déplacement = état.déplacement.tourne();
+            état.x = état.déplacement.deplaceX(état.x);
+            état.y = état.déplacement.deplaceY(état.y);
         }
         private static void dessinerTableau(int nombre, int?[,] array)
         {
@@ -246,7 +143,7 @@ namespace CarreDeChiffres
             int longueurCarre = carreNombre.ToString().Length;
             return longueurCarre;
         }
-        private static void tableSuivante()
+        private static void seprateurDeTables()
         {
             Console.Write(Environment.NewLine + Environment.NewLine);
         }
@@ -266,6 +163,54 @@ namespace CarreDeChiffres
                 Console.Write(0);
             }
             Console.Write(nombre + " ");
+        }
+    }
+    class Vecteur
+    {
+        int dx;  /// La quantité dont on avance en x; peut être 1, 0 ou -1
+        int dy;  /// La quantité dont on avance en y; peut être  1, 0 ou -1 (mais dx et dy ne peuvent pas être tous deux nuls)
+        public static Vecteur versLeHaut = new Vecteur(0, 1);
+        public static Vecteur versLeBas = new Vecteur(0, -1);
+        public static Vecteur versLaDroite = new Vecteur(1, 0);
+        public static Vecteur versLaGauche = new Vecteur(-1, 0);
+        public Vecteur(int dx_, int dy_) {
+            dx = dx_;
+            dy = dy_;
+        }
+        public int deplaceX(int ancienX)
+        {
+            return ancienX + dx;
+        }
+        public int deplaceY(int ancienY)
+        {
+            return ancienY + dy;
+        }
+        public bool sortiraitDuCadre(int ancienX, int ancienY, int cadreMax)
+        {
+            if (deplaceX(ancienX) < 0) return true;
+            if (deplaceX(ancienX) >= cadreMax) return true;
+            if (deplaceY(ancienY) < 0) return true;
+            if (deplaceY(ancienY) >= cadreMax) return true;
+            return false;
+        }
+        public Vecteur tourne()
+        {
+            if (this == Vecteur.versLaGauche)
+            {
+                return Vecteur.versLeBas;
+            }
+            else if(this == Vecteur.versLeBas)
+            {
+                return Vecteur.versLaDroite;
+            }
+            else if(this == Vecteur.versLaDroite)
+            {
+                return Vecteur.versLeHaut;
+            }
+            else
+            {
+                return Vecteur.versLaGauche;
+            }
         }
     }
 }
