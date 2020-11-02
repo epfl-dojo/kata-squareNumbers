@@ -155,7 +155,7 @@ void turn(int& dx, int& dy){
         dx = 0;                                // DOWN
         dy = 1;
     } else {
-        cout << "prout" << endl;
+        cout << "Error: Couldn't chose where to turn." << endl;
     }
 }
 
