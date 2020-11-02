@@ -46,6 +46,6 @@ Générer un carré de chiffres en lignes, colonnes et spirale. L'utilisateur do
 
 ## Contributeurs (langages par ordre alphabétique)
   * [python](./squareNumbers.py) → [@epfl-dojo](https://github.com/epfl-dojo)
+  * [c++](./squareNumbers.cpp) → [@richmartins](https://github.com/richmartins)
   * [c#](./squareNumbers.cs) → [@saphirevert](https://github.com/saphirevert)
   * [PHP](./squareNumbers.php) → [@epfl-dojo](https://github.com/epfl-dojo)
-  * [c++](./squareNumbers.cpp) → [@richmartins](https://github.com/richmartins)
