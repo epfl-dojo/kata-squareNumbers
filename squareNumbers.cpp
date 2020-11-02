@@ -52,26 +52,23 @@ int main(int argc, char** argv) {
 int row(int n, int nbDigits){
     cout << "row: " << n << " * " << n << endl;
 
-    int tot = n * n;
-    int curr = n;
+    int squared = n * n;
 
-    for (int i = 1; i <= tot; ++i){
+    for (int i = 1; i <= squared; ++i){
         cout << setw(nbDigits) << setfill('0') << i << " ";
-        if (i == curr){
-            curr += n;
+        if(i % n == 0){
             cout << endl;
         }
     }
 
     cout << endl;
-    return 0;
+    return EXIT_SUCCESS;
 }
 
 int column(int n, int nbDigits){
 
     cout << "column: " << n << " * " << n << endl;
 
-    int tot = n * n;
     int counter = n;
 
     for(int i = 1; i <= n; ++i){
@@ -160,6 +157,5 @@ void turn(int& dx, int& dy){
     } else {
         cout << "prout" << endl;
     }
-
 }
 
