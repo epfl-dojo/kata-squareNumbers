@@ -1,6 +1,7 @@
 const prompt = require("prompt-sync")({ sigint: true })
 
 let squareSize = prompt("What size do you want?")
+const squareSize = process.argv.slice(2)
 
 //inline
 let count1 = 1
@@ -29,8 +30,10 @@ for (let i = 0; i < squareSize; i++) {
         squareArray2[j][i] = count2
         count2++
     }
+}
+
+for (let i = 0; i < squareSize; i++) {
     output2 += squareArray2[i] + "\n"
 }
-console.log(squareArray2)
-
+console.log(output2)
 
