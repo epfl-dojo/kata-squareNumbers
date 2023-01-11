@@ -2,14 +2,13 @@ const prompt = require("prompt-sync")({ sigint: true })
 
 let squareSize = prompt("What size do you want?")
 
+//inline
 let count1 = 1
 let squareArray1 = []
 let output1 = ""
-
-//inline
 for (let i = 0; i < squareSize; i++) {
     squareArray1[i] = []
-    for (let j = 0; j <= squareSize - 1; j++) {
+    for (let j = 0; j < squareSize; j++) {
         squareArray1[i][j] = count1
         count1++
     }
@@ -19,11 +18,13 @@ console.log(output1);
 
 
 //in column
+let count2 = 1
 let squareArray2 = []
 let output2 = ""
-let count2 = 1
 for (let i = 0; i < squareSize; i++) {
-    //squareArray2[i] = []
+    squareArray2[i] = []
+}
+for (let i = 0; i < squareSize; i++) {
     for (let j = 0; j < squareSize; j++) {
         squareArray2[j][i] = count2
         count2++
