@@ -37,3 +37,35 @@ for (let i = 0; i < squareSize; i++) {
 }
 console.log(output2)
 
+
+//spiral
+
+let i = 0
+let j = 0
+function droite(vecteurD) {
+    squareArray3[j] = squareArray3[j + 1]
+}
+
+function bas(vecteurB) {
+    squareArray3[i] = squareArray3[i + 1]
+}
+
+function gauche(vecteurG) {
+    squareArray3[j] = squareArray3[j - 1]
+}
+
+function haut(vecteurH) {
+    squareArray3[i] = squareArray3[i + 1]
+}
+
+let squareArray3 = []
+for (i = 0; i < squareSize; i++) {
+    squareArray3[i] = []
+    for (j = 0; j < squareSize; j++) {
+        squareArray3[i][j] = 'x'
+    }
+    console.log(squareArray3[i])
+}
+
+
+
