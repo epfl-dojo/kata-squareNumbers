@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 const squareSize = process.argv.slice(2)
+=======
+const prompt = require("prompt-sync")({ sigint: true })
+
+let squareSize = prompt("What size do you want?")
+>>>>>>> Ypso46-JS
 
 //inline
 let count1 = 1
@@ -27,6 +33,7 @@ for (let i = 0; i < squareSize; i++) {
         squareArray2[j][i] = count2
         count2++
     }
+<<<<<<< HEAD
 }
 
 for (let i = 0; i < squareSize; i++) {
@@ -64,5 +71,10 @@ for (i = 0; i < squareSize; i++) {
     console.log(squareArray3[i])
 }
 
+=======
+    output2 += squareArray2[i] + "\n"
+}
+console.log(squareArray2)
+>>>>>>> Ypso46-JS
 
 
