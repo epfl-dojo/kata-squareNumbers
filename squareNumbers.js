@@ -1,9 +1,5 @@
-const prompt = require("prompt-sync")({ sigint: true })
+const squareSize = process.argv.slice(2)
 
-let squareSize = prompt("What size do you want?")
-const squareSize = process.argv.slice(2)
-const squareSize = process.argv.slice(2)
-const squareSize = process.argv.slice(2)
 
 //inline
 let count1 = 1
