@@ -42,25 +42,33 @@ console.log(output2)
 
 //spiral
 
-let i = 0
-let j = 0
-function droite(vecteurD) {
-    squareArray3[j] = squareArray3[j + 1]
+let x = 0
+let y = 0
+let squareArray3 = []
+//TODO create 2D array for coordinates
+let coordinateVector = []
+for (let i = 0; i < squareSize; i++) {
+    coordinateVector[x] = []
+    coordinateVector[x][y]
 }
 
-function bas(vecteurB) {
+function droite(p) {
+    return squareArray3[j] = squareArray3[j + 1]
+
+}
+
+function bas(p) {
     squareArray3[i] = squareArray3[i + 1]
 }
 
-function gauche(vecteurG) {
+function gauche(p) {
     squareArray3[j] = squareArray3[j - 1]
 }
 
-function haut(vecteurH) {
+function haut(p) {
     squareArray3[i] = squareArray3[i + 1]
 }
 
-let squareArray3 = []
 for (i = 0; i < squareSize; i++) {
     squareArray3[i] = []
     for (j = 0; j < squareSize; j++) {
